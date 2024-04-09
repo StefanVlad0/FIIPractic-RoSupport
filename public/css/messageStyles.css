@@ -29,12 +29,14 @@
 .message-form {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: calc(100% - 400px);
+    margin: 0 200px;
     display: flex;
     justify-content: center;
     padding: 10px;
     background-color: #f8f8f8;
 }
+
 
 .message-input {
     width: 100%;

@@ -25,10 +25,10 @@
     </div>
 
 <div class="message-form">
-    <form method="POST" action="/message/{{ $receiver->name }}">
+    <form method="POST" action="/message/{{ $receiver->name }}" style="display: flex;">
         @csrf
-        <textarea name="content" class="message-input"></textarea>
-        <button type="submit">Trimite</button>
+        <textarea name="content" class="message-input" style="flex-grow: 1;"></textarea>
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
     </form>
 </div>
 
