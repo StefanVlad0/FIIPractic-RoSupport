@@ -8,5 +8,6 @@
         Acesta este profilul tău.
     @else
         Acesta este profilul utilizatorului {{ $name }}.
+        <button onclick="location.href='/message/{{ $name }}'">Trimite mesaj</button>
     @endif
 </div>
