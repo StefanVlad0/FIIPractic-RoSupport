@@ -1,5 +1,10 @@
-@include('navbar')
+@extends('layouts.master')
 
+@section('title')
+    {{ $name }}'s profile
+@endsection
+
+@section('content')
 <div>Username: {{ $name }}</div>
 
 
@@ -11,3 +16,4 @@
         <button onclick="location.href='/message/{{ $name }}'">Trimite mesaj</button>
     @endif
 </div>
+@endsection

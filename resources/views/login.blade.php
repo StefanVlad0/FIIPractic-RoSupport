@@ -1,5 +1,10 @@
-@include('navbar')
+@extends('layouts.master')
 
+@section('title')
+    Login
+@endsection
+
+@section('content')
 <div class="login-form-container">
     <h2>Login</h2>
 
@@ -27,3 +32,4 @@
         </div>
     @endif
 </div>
+@endsection

@@ -1,5 +1,10 @@
-@include('navbar')
+@extends('layouts.master')
 
+@section('title')
+    Messenger
+@endsection
+
+@section('content')
 <form method="POST" action="/message/{{ $receiver->name }}">
     @csrf
     <textarea name="content"></textarea>
@@ -11,3 +16,4 @@
         {{ $message->content }}
     </div>
 @endforeach
+@endsection

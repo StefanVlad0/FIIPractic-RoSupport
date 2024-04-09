@@ -1,5 +1,10 @@
-@include('navbar')
+@extends('layouts.master')
 
+@section('title')
+    Register
+@endsection
+
+@section('content')
 <div class="login-form-container">
     <h2>Register</h2>
     <form action="/register" method="POST">
@@ -24,3 +29,4 @@
         </div>
     @endif
 </div>
+@endsection
