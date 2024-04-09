@@ -6,13 +6,19 @@
 
 @section('content')
 
-<div class="message-container">
-    @foreach ($messages as $message)
-        <div class="{{ $message->sender_id == auth()->id() ? 'message-right' : 'message-left' }}">
-            <p>{{ $message->content }}</p>
+    <div class="message-frame">
+        <div class="receiver-name">
+            <h2>{{ $receiver->name }}</h2>
         </div>
-    @endforeach
-</div>
+
+        <div class="message-container">
+            @foreach ($messages as $message)
+                <div class="{{ $message->sender_id == auth()->id() ? 'message-right' : 'message-left' }}">
+                    <p>{{ $message->content }}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
 <div class="message-form">
     <form method="POST" action="/message/{{ $receiver->name }}">
