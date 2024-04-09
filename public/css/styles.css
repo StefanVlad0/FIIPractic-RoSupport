@@ -120,3 +120,49 @@ body {
     margin-left: 20px;
     margin-top: 50px;
 }
+
+p {
+    margin: 0;
+}
+
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message-right, .message-left {
+    color: white;
+    padding: 7px 10px;
+    margin: 5px 10px;
+    border-radius: 20px;
+}
+
+.message-right {
+    align-self: flex-end;
+    background-color: blue;
+}
+
+.message-left {
+    align-self: flex-start;
+    background-color: grey;
+}
+
+.message-form {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+
+.message-input {
+    width: 100%;
+    height: 25px;
+    resize: none;
+}
+
+
