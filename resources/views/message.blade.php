@@ -8,7 +8,7 @@
 
     <div class="message-frame">
         <div class="receiver-name">
-            <h2>{{ $receiver->name }}</h2>
+            <h2><i class="fas fa-circle-user"></i> {{ $receiver->name }}</h2>
         </div>
 
         <div class="message-container">

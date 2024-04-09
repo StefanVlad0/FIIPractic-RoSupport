@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-EXAMPLE" crossorigin="anonymous" />
+<script src="https://kit.fontawesome.com/bc0b04e785.js" crossorigin="anonymous"></script>
+
 
 <nav class="navbar">
     <div class="container">
