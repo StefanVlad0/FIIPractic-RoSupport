@@ -4,6 +4,7 @@
     <title>
         @yield('title', 'RoSupport')
     </title>
+    @yield('head')
 </head>
 <body>
 @include('navbar')

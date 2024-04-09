@@ -4,6 +4,10 @@
     Messenger
 @endsection
 
+@section('head')
+    <link rel="stylesheet" href="{{ asset('css/messageStyles.css') }}">
+@endsection
+
 @section('content')
 
     <div class="message-frame">

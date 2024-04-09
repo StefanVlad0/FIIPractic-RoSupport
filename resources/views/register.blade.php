@@ -4,6 +4,10 @@
     Register
 @endsection
 
+@section('head')
+    <link rel="stylesheet" href="{{ asset('css/loginFormStyles.css') }}">
+@endsection
+
 @section('content')
 <div class="login-form-container">
     <h2>Register</h2>
