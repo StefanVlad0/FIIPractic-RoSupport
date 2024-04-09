@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.error {
+    color: red;
+}
+
+.login-form-container {
+
+    max-width: 300px;
+    margin: 75px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-container h2 {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-form-container label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.login-form-container input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-form-container button:hover {
+    background-color: #0056b3;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 15px;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.nav-links {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+.login-logout a {
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.login-logout a:hover {
+    background-color: #0056b3;
+}
+
+.quote-container {
+    text-align: center;
+    margin-top: 250px;
+}
+
+.quote {
+    font-size: 24px;
+    color: #333;
+}
+
+.author {
+    font-style: italic;
+    margin-top: 10px;
+    color: #555;
+}
+
+.basic-text {
+    margin-left: 20px;
+    margin-top: 50px;
+}
