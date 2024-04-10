@@ -13,12 +13,21 @@
         </ul>
         <div class="login-logout">
             @if(Auth::check())
-                <div id="drawerToggle" onclick="toggleDrawer()">
-                    <i class="fas fa-user-circle"></i>
-                </div>
+                @php
+                    $profileImage = Auth::user()->profile_image;
+                @endphp
+                @if($profileImage)
+                    <div id="drawerToggle" onclick="toggleDrawer()">
+                        <img src="{{ asset('images/' . $profileImage) }}" alt="Profile Image" style="width: 35px; height: 35px; border-radius: 50%;">
+                    </div>
+                @else
+                    <div id="drawerToggle" onclick="toggleDrawer()">
+                        <i class="fas fa-user-circle" style="font-size: 30px;"></i>
+                    </div>
+                @endif
                 <div id="drawer" style="display: none;">
                     <a href="{{ route('users.show', ['name' => Auth::user()->name]) }}">View Profile</a>
-                    <a href="{{ route('logout') }}">Edit Profile</a>
+                    <a href="{{ route('profile.edit') }}">Edit Profile</a>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">

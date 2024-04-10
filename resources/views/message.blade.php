@@ -12,7 +12,12 @@
 
     <div class="message-frame">
         <div class="receiver-name">
-            <h2><i class="fas fa-circle-user"></i> {{ $receiver->name }}</h2>
+            @if($receiver->profile_image)
+                <img src="{{ asset('images/' . $receiver->profile_image) }}" alt="Profile Image" class="profile-image">
+            @else
+                <i class="fas fa-circle-user profile-icon"></i>
+            @endif
+            <h2>{{ $receiver->name }}</h2>
         </div>
 
         <div class="message-container">
