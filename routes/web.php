@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
         } else {
             return view('users.notfound');
         }
-    });
+    })->name('users.show');
 });
 
 Route::middleware(['guest'])->group(function () {
