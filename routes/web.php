@@ -12,11 +12,13 @@ use App\Models\User;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return view('dashboard');
+        $posts = App\Models\Post::latest()->get();;
+        return view('dashboard', ['posts' => $posts]);
+//        return view('dashboard');
     } else {
         return redirect('/login');
     }
-});
+})->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('posts', PostController::class);
@@ -45,10 +47,10 @@ Route::middleware(['guest'])->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('/dashboard', function () {
-    $posts = App\Models\Post::all(); // sau orice altă logică pentru a prelua postările
-    return view('dashboard', ['posts' => $posts]);
-})->name('dashboard')->middleware('auth');
+//Route::get('/dashboard', function () {
+//    $posts = App\Models\Post::all(); // sau orice altă logică pentru a prelua postările
+//    return view('dashboard', ['posts' => $posts]);
+//})->name('dashboard')->middleware('auth');
 
 
 
