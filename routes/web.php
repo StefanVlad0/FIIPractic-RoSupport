@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
         $user = User::where('name', $name)->first();
 
         if ($user) {
-            return view('users.show', ['name' => $name]);
+            return view('users.show', ['user' => $user]);
         } else {
             return view('users.notfound');
         }

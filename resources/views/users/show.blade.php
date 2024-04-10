@@ -1,19 +1,33 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ $name }}'s profile
+    {{ $user->name }}'s profile
+@endsection
+
+@section('head')
+    <link rel="stylesheet" href="{{ asset('css/profileStyles.css') }}">
 @endsection
 
 @section('content')
-<div>Username: {{ $name }}</div>
-
-
-<div class="card-body">
-    @if (Auth::user()->name == $name)
-        Acesta este profilul tău.
-    @else
-        Acesta este profilul utilizatorului {{ $name }}.
-        <button onclick="location.href='/message/{{ $name }}'">Trimite mesaj</button>
-    @endif
-</div>
+    <div class="profile-container">
+        <div class="profile-info">
+            <div class="profile-details">
+                <?php if($user->profile_image): ?>
+                <img src="<?php echo e(asset('images/' . $user->profile_image)); ?>" alt="Profile Image" class="profile-image">
+                <?php else: ?>
+                <i class="fas fa-circle-user profile-icon"></i>
+                <?php endif; ?>
+                <div class="details">
+                    <h2>{{ $user->name }}</h2>
+                    <p>Email: {{ $user->email }}</p>
+                </div>
+            </div>
+            <p style="align-self:flex-start;">Biography:</p>
+            <div class="profile-bio-container">
+                <div class="profile-bio">
+                    <p>{{ $user->bio ?? 'No biography' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
