@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MessageController;
@@ -17,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::resource('posts', PostController::class);
+    Route::resource('posts.comments', CommentController::class)->shallow();
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/message/{name}', [MessageController::class, 'create']);
@@ -40,4 +44,11 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/dashboard', function () {
+    $posts = App\Models\Post::all(); // sau orice altă logică pentru a prelua postările
+    return view('dashboard', ['posts' => $posts]);
+})->name('dashboard')->middleware('auth');
+
+
 
