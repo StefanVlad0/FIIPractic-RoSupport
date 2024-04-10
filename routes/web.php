@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AuthController;
@@ -21,6 +22,8 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/qr-code', [ReferralController::class, 'generateQrCode'])->name('qr-code');
+    Route::get('/referral', [ReferralController::class, 'show'])->name('referral');
     Route::resource('posts', PostController::class);
     Route::resource('posts.comments', CommentController::class)->shallow();
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['guest'])->group(function () {
+    Route::get('/invite/{name}', [AuthController::class, 'showInvitation'])->name('invite');
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
     Route::get('/register', [RegisterController::class, 'showRegistrationForm']);

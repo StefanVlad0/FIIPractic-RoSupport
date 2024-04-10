@@ -28,6 +28,7 @@
                 <div id="drawer" style="display: none;">
                     <a href="{{ route('users.show', ['name' => Auth::user()->name]) }}">View Profile</a>
                     <a href="{{ route('profile.edit') }}">Edit Profile</a>
+                    <a href="{{ route('referral') }}">Referral</a>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
