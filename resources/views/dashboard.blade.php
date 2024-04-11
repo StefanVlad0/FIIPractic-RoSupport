@@ -59,10 +59,10 @@
                 <div class="comments-section">
                     <div class="post-votes">
                         <button data-href="{{ route('posts.like', $post->id) }}">
-                            <i class="fa-regular fa-heart vote-icon"></i>
+                            <i class="fa-regular fa-heart vote-icon {{ $post->isLikedBy(\Illuminate\Support\Facades\Auth::user()) ? 'liked fa-solid' : '' }}"></i>
                         </button>
 
-                        <div class="likes">{{ $post->likes }}</div>
+                        <div class="likes" id="likes-{{ $post->id }}">{{ $post->likes }}</div>
                     </div>
                     <div>
                         <i class="far fa-message message-icon"></i>

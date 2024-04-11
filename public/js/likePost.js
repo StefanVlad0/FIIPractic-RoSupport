@@ -1,8 +1,9 @@
 $(document).ready(function() {
     $('.post-votes button').on('click', function(e) {
-        console.log("Ai apasat butonul!");
         var url = $(this).data('href');
         var token = $('meta[name="csrf-token"]').attr('content');
+        var heartIcon = $(this).find('.vote-icon');
+        var likesDiv = $(this).closest('.post').find('.likes');
 
         $.ajax({
             url: url,
@@ -10,16 +11,17 @@ $(document).ready(function() {
             data: {_token: token},
             success: function(response) {
                 if(response.liked) {
-                    alert('Ai dat like la postare!');
+                    heartIcon.addClass('liked fa-solid');
+                    likesDiv.text(parseInt(likesDiv.text()) + 1);
                 } else {
-                    alert('Ai retras like-ul de la postare!');
+                    heartIcon.removeClass('liked fa-solid');
+                    likesDiv.text(parseInt(likesDiv.text()) - 1);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
                 alert('A apărut o eroare!');
             }
-
         });
     });
 });

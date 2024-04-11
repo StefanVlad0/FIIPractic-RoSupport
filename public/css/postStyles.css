@@ -92,4 +92,14 @@
     margin-right: 5px;
 }
 
+.liked {
+    color: red;
+}
+
+.post-votes button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 
