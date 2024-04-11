@@ -58,3 +58,19 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.message-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.message-button:hover {
+    background-color: #0056b3;
+}

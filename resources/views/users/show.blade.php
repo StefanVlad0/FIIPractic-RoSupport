@@ -28,6 +28,9 @@
                     <p>{{ $user->bio ?? 'No biography' }}</p>
                 </div>
             </div>
+            @if($user->id !== auth()->id())
+                <a href="{{ route('message.create', ['name' => $user->name]) }}" class="message-button">Send message</a>
+            @endif
         </div>
     </div>
 @endsection

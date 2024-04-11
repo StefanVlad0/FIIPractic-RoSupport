@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('posts.comments', CommentController::class)->shallow();
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/message/{name}', [MessageController::class, 'create']);
+    Route::get('/message/{name}', [MessageController::class, 'create'])->name('message.create');
     Route::post('/message/{name}', [MessageController::class, 'store']);
     Route::get('/users/{name}', function ($name) {
         $user = User::where('name', $name)->first();
