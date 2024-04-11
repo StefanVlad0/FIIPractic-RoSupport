@@ -68,7 +68,6 @@
 
 .post-votes {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 5px;
 }
@@ -83,16 +82,14 @@
 
 .comments-section {
     display: flex;
+    gap: 10px;
     align-items: center;
     margin-top: 10px;
 }
 
 .message-icon {
-    font-size: 16px;
+    font-size: 18px;
     margin-right: 5px;
 }
 
-.comments-count {
-    color: gray;
-}
 

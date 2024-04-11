@@ -5,6 +5,7 @@
 @endsection
 
 @section('head')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/postStyles.css') }}">
 @endsection
 
@@ -32,13 +33,12 @@
             </div>
         @endif
     </a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 @foreach($posts as $post)
         <div class="post">
-            <div class="post-votes">
-                <i class="fas fa-up-long vote-icon"></i>
-                <div class="likes">{{ $post->likes }}</div>
-                <i class="fas fa-down-long vote-icon"></i>
-            </div>
             <div>
                 <a href="{{ route('users.show', $post->user->name) }}" class="user-info">
                     @if($post->user->profile_image)
@@ -57,11 +57,22 @@
                     <img src="{{ asset('images/' . $post->image) }}" alt="Post image">
                 @endif
                 <div class="comments-section">
-                    <i class="far fa-message message-icon"></i>
-                    <span class="comments-count">0 Comments</span>
+                    <div class="post-votes">
+                        <button data-href="{{ route('posts.like', $post->id) }}">
+                            <i class="fa-regular fa-heart vote-icon"></i>
+                        </button>
+
+                        <div class="likes">{{ $post->likes }}</div>
+                    </div>
+                    <div>
+                        <i class="far fa-message message-icon"></i>
+                        <span class="comments-count">0 Comments</span>
+                    </div>
                 </div>
             </div>
         </div>
 @endforeach
 </div>
+
+<script src="{{ asset('js/likePost.js') }}"></script>
 @endsection

@@ -22,6 +22,7 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+    Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
     Route::get('/qr-code', [ReferralController::class, 'generateQrCode'])->name('qr-code');
     Route::get('/referral', [ReferralController::class, 'show'])->name('referral');
     Route::resource('posts', PostController::class);
