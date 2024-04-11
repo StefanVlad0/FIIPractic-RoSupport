@@ -16,6 +16,9 @@
                 @php
                     $profileImage = Auth::user()->profile_image;
                 @endphp
+                <div class="points" onclick="window.location.href='/referral'">
+                    {{ Auth::user()->points }} <i class="fas fa-coins"></i>
+                </div>
                 @if($profileImage)
                     <div id="drawerToggle" onclick="toggleDrawer()">
                         <img src="{{ asset('images/' . $profileImage) }}" alt="Profile Image" style="width: 35px; height: 35px; border-radius: 50%;">

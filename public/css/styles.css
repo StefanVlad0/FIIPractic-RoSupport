@@ -52,6 +52,11 @@ p {
     font-size: 16px;
 }
 
+.login-logout {
+    display: flex;
+
+}
+
 .login-logout a {
     color: #fff;
     background-color: #007bff;
@@ -85,3 +90,16 @@ p {
     margin-bottom: 10px;
     text-decoration: none;
 }
+
+.points {
+    cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.points i {
+    margin-left: 5px;
+}
+
