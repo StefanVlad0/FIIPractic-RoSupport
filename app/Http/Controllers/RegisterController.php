@@ -25,6 +25,16 @@ class RegisterController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+
+        if ($request->inviter_id) {
+            $inviter = User::find($request->inviter_id);
+            if ($inviter) {
+                $inviter->points += 3;
+                $user->points = 1;
+                $inviter->save();
+            }
+        }
+
         $user->save();
 
         return redirect('/login');
