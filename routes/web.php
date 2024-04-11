@@ -22,6 +22,23 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/messenger/users', function () {
+        $userId = Auth::id();
+        $users = DB::table('messages')
+            ->where('sender_id', $userId)
+            ->orWhere('receiver_id', $userId)
+            ->join('users', function ($join) use ($userId) {
+                $join->on('users.id', '=', 'messages.sender_id')
+                    ->orOn('users.id', '=', 'messages.receiver_id')
+                    ->where('users.id', '!=', $userId);
+            })
+            ->select('users.*')
+            ->distinct()
+            ->get()
+            ->where('id', '!=', $userId);
+
+        return response()->json($users);
+    });
     Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
     Route::get('/qr-code', [ReferralController::class, 'generateQrCode'])->name('qr-code');
     Route::get('/referral', [ReferralController::class, 'show'])->name('referral');

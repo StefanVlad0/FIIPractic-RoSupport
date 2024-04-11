@@ -73,7 +73,7 @@ p {
     cursor: pointer;
 }
 
-#drawer {
+#drawer, #messengerDrawer {
     background-color: #333;
     color: #fff;
     padding: 15px;
@@ -84,16 +84,16 @@ p {
     z-index: 2;
 }
 
-#drawer a {
+#drawer a, #messengerDrawer a {
     color: #fff;
     display: block;
     margin-bottom: 10px;
     text-decoration: none;
 }
 
-.points {
+.points, .messenger {
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 20px;
     display: flex;
     align-items: center;
     color: #fff;
@@ -102,4 +102,8 @@ p {
 .points i {
     margin-left: 5px;
 }
+
+
+
+
 

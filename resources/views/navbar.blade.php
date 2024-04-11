@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-EXAMPLE" crossorigin="anonymous" />
 <script src="https://kit.fontawesome.com/bc0b04e785.js" crossorigin="anonymous"></script>
 <script src="{{ asset('js/drawer.js') }}"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <nav class="navbar">
@@ -16,6 +16,10 @@
                 @php
                     $profileImage = Auth::user()->profile_image;
                 @endphp
+                <div class="messenger" onclick="toggleMessengerDrawer()">
+                    <i class="fa-solid fa-comments"></i>
+                </div>
+                <div id="messengerDrawer" style="display: none;"></div>
                 <div class="points" onclick="window.location.href='/referral'">
                     {{ Auth::user()->points }} <i class="fas fa-coins"></i>
                 </div>
@@ -47,3 +51,6 @@
         </div>
     </div>
 </nav>
+
+<script src="{{ asset('js/chatDrawer.js') }}"></script>
+
