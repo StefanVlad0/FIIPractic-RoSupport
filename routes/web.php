@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
@@ -43,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/qr-code', [ReferralController::class, 'generateQrCode'])->name('qr-code');
     Route::get('/referral', [ReferralController::class, 'show'])->name('referral');
     Route::resource('posts', PostController::class);
+    Route::resource('products', ProductController::class);
     Route::resource('posts.comments', CommentController::class)->shallow();
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

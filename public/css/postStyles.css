@@ -102,4 +102,20 @@
     cursor: pointer;
 }
 
+.product-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-section {
+    width: 50%;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 20px;
+    color:gold;
+}
 
