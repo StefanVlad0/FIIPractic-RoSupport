@@ -53,11 +53,17 @@
                             </a>
                         </div>
                         <div class="info-section stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                            <span class="rating-number">{{ round($product->rating, 1) }}</span>
+                            @for ($i = 0; $i < floor($product->rating); $i++)
+                                <i class="fa-solid fa-star"></i>
+                            @endfor
+                            @if ($product->rating - floor($product->rating) >= 0.5)
+                                <i class="fa-solid fa-star"></i>
+                                @php $i++ @endphp
+                            @endif
+                            @while ($i++ < 5)
+                                <i class="fa-regular fa-star"></i>
+                            @endwhile
                         </div>
                     </div>
                     <p>{{ $product->description }}</p>
