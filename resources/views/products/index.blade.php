@@ -59,7 +59,7 @@
                                 <span><strong>{{ $product->user->name }}</strong></span>
                             </a>
                         </div>
-                        <div class="info-section stars">
+                        <div class="info-section stars" onclick="window.location='{{ route('products.show', $product->id) }}'">
                             <span class="rating-number">{{ round($product->rating, 1) }}</span>
                             @for ($i = 0; $i < floor($product->rating); $i++)
                                 <i class="fa-solid fa-star"></i>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="comments-section">
                         <div class="price"><strong>{{ $product->price }} lei</strong></div>
-                        <button>Comanda</button>
+                        <button onclick="window.location='{{ route('products.show', $product->id) }}'">Comanda</button>
                     </div>
                 </div>
             </div>
