@@ -32,12 +32,15 @@ function toggleNotificationDrawer() {
                     }
                 }
 
+                $('.notification-dot').remove();
+
                 drawer.style.display = "block";
             },
             error: function(error) {
                 console.error(error);
             }
         });
+
     } else {
         drawer.style.display = "none";
     }
