@@ -38,6 +38,25 @@ Route::middleware(['auth'])->group(function () {
             ->get()
             ->where('id', '!=', $userId);
 
+        foreach ($users as $user) {
+            $lastMessage = DB::table('messages')
+                ->where(function ($query) use ($userId, $user) {
+                    $query->where('sender_id', $userId)
+                        ->where('receiver_id', $user->id);
+                })
+                ->orWhere(function ($query) use ($userId, $user) {
+                    $query->where('sender_id', $user->id)
+                        ->where('receiver_id', $userId);
+                })
+                ->orderBy('created_at', 'desc')
+                ->first();
+
+            if ($lastMessage) {
+                $user->last_message = $lastMessage->content;
+                $user->last_sender_id = $lastMessage->sender_id;
+            }
+        }
+
         return response()->json($users);
     });
     Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
