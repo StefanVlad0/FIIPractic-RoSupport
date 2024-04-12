@@ -47,6 +47,7 @@ class ProductController extends Controller
             'quantity' => 'required|integer',
             'is_promoted' => 'required|boolean',
             'tags' => 'nullable|array',
+            'price' => 'required|integer',
         ]);
 
         $product = new Product;
@@ -55,6 +56,7 @@ class ProductController extends Controller
         $product->rating = 0;
         $product->is_promoted = $request->is_promoted;
         $product->user_id = auth()->id();
+        $product->price = $request->price;
 
         // Save images if they exist
         for ($i = 1; $i <= 3; $i++) {

@@ -91,6 +91,7 @@
                             <button class="next navigation-button"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div class="comments-section">
+                        <div class="price"><strong>{{ $product->price }} lei</strong></div>
                         <button>Comanda</button>
                     </div>
                 </div>

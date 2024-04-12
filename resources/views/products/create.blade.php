@@ -23,6 +23,10 @@
                 <input type="number" class="form-control" id="quantity" name="quantity">
             </div>
             <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" class="form-control" id="price" name="price" value="25">
+            </div>
+            <div class="form-group">
                 <label for="is_promoted">Is Promoted</label>
                 <select class="form-control" id="is_promoted" name="is_promoted">
                     <option value="1">Yes</option>
