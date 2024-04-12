@@ -59,6 +59,12 @@
                 </div>
                 <div class="comments-section">
                     <div class="price"><strong>{{ $product->price }} lei</strong></div>
+                    <div class="quantity-selector">
+                        <button id="minus-btn" onclick="decreaseQuantity()">-</button>
+                        <input type="text" id="quantity" value="0" readonly>
+                        <button id="plus-btn" onclick="increaseQuantity()">+</button>
+                    </div>
+                    <div class="total-price">Total: <span id="total-price">0</span> lei</div>
                     <button onclick="window.location='{{ route('products.show', $product->id) }}'">Comanda</button>
                 </div>
             </div>
@@ -66,4 +72,28 @@
     </div>
 
     <script src="{{ asset('js/imageCarousel.js') }}"></script>
+    <script>
+        var price = {{ $product->price }};
+        var quantityInput = document.getElementById('quantity');
+        var totalPriceDisplay = document.getElementById('total-price');
+
+        function increaseQuantity() {
+            var quantity = parseInt(quantityInput.value);
+            quantityInput.value = quantity + 1;
+            updateTotalPrice();
+        }
+
+        function decreaseQuantity() {
+            var quantity = parseInt(quantityInput.value);
+            if (quantity > 0) {
+                quantityInput.value = quantity - 1;
+                updateTotalPrice();
+            }
+        }
+
+        function updateTotalPrice() {
+            var quantity = parseInt(quantityInput.value);
+            totalPriceDisplay.textContent = quantity * price;
+        }
+    </script>
 @endsection
