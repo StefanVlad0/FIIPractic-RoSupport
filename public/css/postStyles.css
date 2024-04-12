@@ -56,6 +56,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
 .create-post {
@@ -117,5 +118,23 @@
     justify-content: flex-end;
     font-size: 20px;
     color:gold;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.activeButton {
+    border-bottom: 3px solid mediumturquoise;
 }
 

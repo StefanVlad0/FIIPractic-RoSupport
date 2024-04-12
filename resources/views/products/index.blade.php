@@ -10,9 +10,32 @@
 @endsection
 
 @section('content')
-    <h2>Hello, {{ \Illuminate\Support\Facades\Auth::user()->name }}!</h2>
+
+    <div class="navigation">
+        <a href="{{ url('/products') }}" class="activeButton">Products</a>
+        <a href="{{ url('/') }}">Posts</a>
+    </div>
 
     <div class="posts-container">
+        <a href="{{ route('products.create') }}" class="post">
+            @if(\Illuminate\Support\Facades\Auth::user()->profile_image)
+                <div class="create-post-container">
+                    <img src="{{ asset('images/' . \Illuminate\Support\Facades\Auth::user()->profile_image) }}" alt="User profile image" style="width: 35px; height: 35px; border-radius: 50%;">
+                    <div class="create-post">
+                        Post a product
+                    </div>
+                </div>
+            @else
+                <div class="create-post-container">
+                    <div>
+                        <i class="fas fa-user-circle user-icon" style="font-size: 30px;"></i>
+                    </div>
+                    <div class="create-post">
+                        Post a product
+                    </div>
+                </div>
+            @endif
+        </a>
         @foreach($products as $product)
             <div class="post">
                 <div>

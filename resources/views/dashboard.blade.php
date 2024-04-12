@@ -10,8 +10,11 @@
 @endsection
 
 @section('content')
-<h2>Hello, {{ \Illuminate\Support\Facades\Auth::user()->name }}!</h2>
 
+    <div class="navigation">
+        <a href="{{ url('/products') }}">Products</a>
+        <a href="{{ url('/') }}" class="activeButton">Posts</a>
+    </div>
 
 <div class="posts-container">
     <a href="{{ route('posts.create') }}" class="post">
