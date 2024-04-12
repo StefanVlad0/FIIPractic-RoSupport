@@ -166,3 +166,8 @@
     margin-right: 10px;
     color: black;
 }
+
+.promoted {
+    padding: 10px;
+    font-weight: bold;
+}

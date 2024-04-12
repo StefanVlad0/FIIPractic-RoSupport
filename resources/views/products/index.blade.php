@@ -36,6 +36,13 @@
                 </div>
             @endif
         </a>
+
+        @php
+            $products = $products->sortByDesc(function ($product, $key) {
+                return $product->is_promoted && $product->created_at->diffInHours() < 24 ? 1 : 0;
+            });
+        @endphp
+
         @foreach($products as $product)
             <div class="post" id="post-{{ $product->id }}">
                 <div>
@@ -66,6 +73,9 @@
                             @endwhile
                         </div>
                     </div>
+                    @if($product->is_promoted && $product->created_at->diffInHours() < 24)
+                        <p class="promoted">- PROMOTED -</p>
+                    @endif
                     <p>{{ $product->description }}</p>
                     <div class="image-carousel" id="carousel-{{ $product->id }}">
                         @if($product->image1)
