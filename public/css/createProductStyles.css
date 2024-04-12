@@ -1,4 +1,4 @@
-.post-form-container {
+.product-form-container {
     max-width: 300px;
     margin: 75px auto;
     padding: 20px;
@@ -7,17 +7,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.post-form-container h2 {
+.product-form-container h2 {
     text-align: center;
     margin-bottom: 35px;
 }
 
-.post-form-container label {
+.product-form-container label {
     display: block;
     margin-bottom: 6px;
 }
 
-.post-form-container textarea, .post-form-container input {
+.product-form-container textarea, .product-form-container input, .product-form-container select {
     box-sizing: border-box;
     display: block;
     width: 100%;
@@ -27,7 +27,7 @@
     border-radius: 4px;
 }
 
-.post-form-container button {
+.product-form-container button {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -38,6 +38,6 @@
     margin-top: 10px;
 }
 
-.post-form-container button:hover {
+.product-form-container button:hover {
     background-color: #0056b3;
 }
