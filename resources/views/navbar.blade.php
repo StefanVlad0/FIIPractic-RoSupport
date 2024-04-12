@@ -16,6 +16,9 @@
                 @php
                     $profileImage = Auth::user()->profile_image;
                 @endphp
+                <div class="notifications">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
                 <div class="messenger" onclick="toggleMessengerDrawer()">
                     <i class="fa-solid fa-comments"></i>
                 </div>
