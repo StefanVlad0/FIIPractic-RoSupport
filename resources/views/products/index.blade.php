@@ -61,9 +61,19 @@
                         </div>
                     </div>
                     <p>{{ $product->description }}</p>
-                    @if($product->image1)
-                        <img src="{{ asset('images/' . $product->image1) }}" alt="Post image">
-                    @endif
+                    <div class="image-carousel">
+                        @if($product->image1)
+                            <img class="product-image" src="{{ asset('images/' . $product->image1) }}" alt="Post image 1">
+                        @endif
+                        @if($product->image2)
+                            <img class="product-image" src="{{ asset('images/' . $product->image2) }}" alt="Post image 2" style="display: none;">
+                        @endif
+                        @if($product->image3)
+                            <img class="product-image" src="{{ asset('images/' . $product->image3) }}" alt="Post image 3" style="display: none;">
+                        @endif
+                            <button class="prev navigation-button"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="next navigation-button"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
                     <div class="comments-section">
                         <button>Comanda</button>
                     </div>
@@ -72,4 +82,5 @@
         @endforeach
     <div>
 
+        <script src="{{ asset('js/imageCarousel.js') }}"></script>
 @endsection
