@@ -1,5 +1,6 @@
 .message-frame {
-    margin: 25px 600px 100px 600px;
+    margin: 25px 600px 50px 600px;
+    background-color: white;
 }
 
 .message-container {
@@ -29,7 +30,7 @@
 .message-form {
     position: fixed;
     bottom: 0;
-    width: calc(100% - 1200px);
+    width: calc(100% - 1220px);
     margin: 0 600px;
     display: flex;
     justify-content: center;

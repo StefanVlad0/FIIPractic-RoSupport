@@ -29,12 +29,12 @@
         </div>
     </div>
 
-<div class="message-form">
-    <form method="POST" action="/message/{{ $receiver->name }}" style="display: flex;">
-        @csrf
-        <textarea name="content" class="message-input" style="flex-grow: 1;"></textarea>
-        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-    </form>
-</div>
+    <div class="message-form">
+        <form method="POST" action="/message/{{ $receiver->name }}" style="display: flex;">
+            @csrf
+            <textarea name="content" class="message-input" style="flex-grow: 1;"></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
 
 @endsection
