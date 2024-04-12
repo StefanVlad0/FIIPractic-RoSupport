@@ -37,7 +37,7 @@
             @endif
         </a>
         @foreach($products as $product)
-            <div class="post">
+            <div class="post" id="post-{{ $product->id }}">
                 <div>
                     <div class="product-info">
                         <div class="info-section">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <p>{{ $product->description }}</p>
-                    <div class="image-carousel">
+                    <div class="image-carousel" id="carousel-{{ $product->id }}">
                         @if($product->image1)
                             <img class="product-image" src="{{ asset('images/' . $product->image1) }}" alt="Post image 1">
                         @endif

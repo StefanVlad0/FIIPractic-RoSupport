@@ -31,6 +31,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+
+        if ($request->is_promoted && $user->points <= 0) {
+            return back()->withErrors([
+                'is_promoted' => 'Nu aveti suficiente puncte pentru a promova un produs.',
+            ]);
+        }
+
         $request->validate([
             'description' => 'required|string',
             'image1' => 'nullable|image',
@@ -62,6 +70,11 @@ class ProductController extends Controller
         // Attach tags if they exist
         if ($request->tags) {
             $product->tags()->attach($request->tags);
+        }
+
+        if ($request->is_promoted) {
+            $user->points -= 1;
+            $user->save();
         }
 
         return redirect()->route('products.index');
