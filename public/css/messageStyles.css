@@ -29,12 +29,12 @@
 .message-form {
     position: fixed;
     bottom: 0;
-    width: calc(100% - 400px);
-    margin: 0 200px;
+    width: calc(100% - 1200px);
+    margin: 0 600px;
     display: flex;
     justify-content: center;
     padding: 10px;
-    background-color: #f8f8f8;
+    background-color: grey;
 }
 
 

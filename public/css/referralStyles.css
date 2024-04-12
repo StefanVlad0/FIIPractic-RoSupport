@@ -6,17 +6,17 @@ body {
     height: 100vh;
     gap: 20px;
     margin: 0;
-    background-color: #f8f9fa;
+
     font-family: 'Open Sans', sans-serif;
 }
 
 
 h1 {
-    color: #6c757d;
+    color: black;
 }
 
 p {
-    color: #6c757d;
+    color: black;
 }
 
 a {
