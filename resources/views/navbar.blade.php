@@ -15,11 +15,18 @@
             @if(Auth::check())
                 @php
                     $profileImage = Auth::user()->profile_image;
+                    $unseenNotifications = DB::table('notifications')
+                        ->where('user_id', Auth::id())
+                        ->where('seen', false)
+                        ->count();
                 @endphp
-                <div class="notifications" style="position: relative;">
+                <div class="notifications" style="position: relative;" onclick="toggleNotificationDrawer()">
                     <i class="fa-solid fa-bell"></i>
-                    <div class="notification-dot"></div>
+                    @if($unseenNotifications > 0)
+                        <div class="notification-dot"></div>
+                    @endif
                 </div>
+                <div id="notificationDrawer" style="display: none;"></div>
                 <div class="messenger" onclick="toggleMessengerDrawer()">
                     <i class="fa-solid fa-comments"></i>
                 </div>
@@ -57,4 +64,5 @@
 </nav>
 
 <script src="{{ asset('js/chatDrawer.js') }}"></script>
+<script src="{{ asset('js/notificationsDrawer.js') }}"></script>
 

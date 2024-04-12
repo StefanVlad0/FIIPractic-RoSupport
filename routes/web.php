@@ -23,6 +23,17 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/notifications', function () {
+        $userId = Auth::id();
+        $notifications = DB::table('notifications')
+            ->where('user_id', $userId)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json($notifications);
+    });
+
     Route::get('/messenger/users', function () {
         $userId = Auth::id();
         $users = DB::table('messages')

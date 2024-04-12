@@ -74,14 +74,14 @@ p {
     cursor: pointer;
 }
 
-#drawer, #messengerDrawer {
+#drawer, #messengerDrawer, #notificationDrawer {
     background-color: #333;
     color: #fff;
     padding: 15px;
     position: absolute;
     right: 0;
-    top: 60px; /* adjust this value as needed */
-    width: 200px; /* adjust this value as needed */
+    top: 60px;
+    width: 200px;
     z-index: 2;
 }
 
