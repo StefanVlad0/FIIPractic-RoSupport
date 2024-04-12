@@ -65,8 +65,25 @@
                         <button id="plus-btn" onclick="increaseQuantity()">+</button>
                     </div>
                     <div class="total-price">Total: <span id="total-price">0</span> lei</div>
-                    <button onclick="window.location='{{ route('products.show', $product->id) }}'">Comanda</button>
+                    <form action="{{ route('products.order', $product->id) }}" method="POST">
+                        @csrf
+                        <input type="hidden" id="quantity" name="quantity" value="0">
+                        <button type="submit">Comanda</button>
+                    </form>
                 </div>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -80,6 +97,7 @@
         function increaseQuantity() {
             var quantity = parseInt(quantityInput.value);
             quantityInput.value = quantity + 1;
+            document.getElementsByName('quantity')[0].value = quantity + 1;
             updateTotalPrice();
         }
 
@@ -87,9 +105,12 @@
             var quantity = parseInt(quantityInput.value);
             if (quantity > 0) {
                 quantityInput.value = quantity - 1;
+                document.getElementsByName('quantity')[0].value = quantity - 1;
                 updateTotalPrice();
             }
         }
+
+
 
         function updateTotalPrice() {
             var quantity = parseInt(quantityInput.value);

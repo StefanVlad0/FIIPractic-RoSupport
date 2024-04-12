@@ -24,6 +24,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::post('/products/{product}/order', [ProductController::class, 'order'])->name('products.order');
+
     Route::get('/notifications', function () {
         $userId = Auth::id();
         $notifications = DB::table('notifications')

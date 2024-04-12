@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -121,5 +123,33 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+
+    public function order(Request $request, Product $product)
+    {
+        $quantity = $request->input('quantity');
+
+        if ($quantity <= 0) {
+            return back()->withErrors(['Quantity must be greater than 0']);
+        }
+
+        if ($quantity > $product->quantity) {
+            return back()->withErrors(['Not enough items. Current stock: ' . $product->quantity]);
+        }
+
+        $product->quantity -= $quantity;
+        if ($product->quantity < 0) {
+            $product->quantity = 0;
+        }
+        $product->save();
+
+        // Create a notification for the product owner
+        $notification = new Notification();
+        $notification->user_id = $product->user_id;
+        $notification->content = Auth::user()->name . ' a cumparat ' . $quantity . ' produse ' . $product->description;
+        $notification->seen = false;
+        $notification->save();
+
+        return back()->with('success', 'Order placed successfully');
     }
 }

@@ -176,3 +176,15 @@
 .price {
     margin: 0;
 }
+
+.alert {
+    margin-top: 10px;
+}
+
+.alert-success {
+    color: lawngreen;
+}
+
+.alert-danger {
+    color: red;
+}
