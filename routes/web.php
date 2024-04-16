@@ -37,6 +37,25 @@ Route::middleware(['auth'])->group(function () {
         return response()->json($notifications);
     });
 
+    Route::patch('/notifications/{id}', function ($id, Request $request) {
+        $userId = Auth::id();
+
+        $notification = DB::table('notifications')
+            ->where('id', $id)
+            ->where('user_id', $userId)
+            ->first();
+
+        if (!$notification) {
+            return response()->json(['error' => 'Notification not found or unauthorized'], 404);
+        }
+
+        DB::table('notifications')
+            ->where('id', $id)
+            ->update(['seen' => true]);
+
+        return response()->json(['message' => 'Notification updated successfully'], 200);
+    });
+
     Route::get('/messenger/users', function () {
         $userId = Auth::id();
         $users = DB::table('messages')

@@ -28,6 +28,8 @@ function toggleNotificationDrawer() {
                             div.appendChild(content);
 
                             drawer.appendChild(div);
+
+                            markNotificationAsSeen(notification.id);
                         }
                     }
                 }
@@ -44,4 +46,23 @@ function toggleNotificationDrawer() {
     } else {
         drawer.style.display = "none";
     }
+}
+
+function markNotificationAsSeen(notificationId) {
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+        url: '/notifications/' + notificationId,
+        type: 'PATCH',
+        dataType: 'json',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        },
+        data: { seen: true },
+        success: function(response) {
+            console.log('Notification marked as seen:', response);
+        },
+        error: function(error) {
+            console.error('Error marking notification as seen:', error);
+        }
+    });
 }
