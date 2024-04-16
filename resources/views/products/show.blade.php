@@ -7,6 +7,7 @@
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/postStyles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ratingStyles.css') }}">
 @endsection
 
 @section('content')
@@ -86,6 +87,23 @@
                 @endif
             </div>
         </div>
+        <div class="post">
+            <p>Add review</p>
+            <div class="review-section stars" id="reviewStars">
+                @for ($i = 1; $i <= 5; $i++)
+                    <i class="fa-regular fa-star" data-rating="{{ $i }}" onmouseover="fillReviewStars({{ $i }})" onmouseout="resetReviewStars()" onclick="submitReview({{ $i }})"></i>
+                @endfor
+            </div>
+            <div class="review-section">
+                <textarea name="content" id="reviewContent" rows="3" placeholder="Add your review"></textarea>
+                <div id="reviewMessage" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+        <div class="post">
+            <div id="reviewsList">
+                <h2>Reviews</h2>
+            </div>
+        </div>
     </div>
 
     <script src="{{ asset('js/imageCarousel.js') }}"></script>
@@ -117,4 +135,92 @@
             totalPriceDisplay.textContent = quantity * price;
         }
     </script>
+
+    <script>
+        function submitReview(rating) {
+            var content = $('#reviewContent').val().trim();
+
+            if (!content) {
+                content = null;
+            }
+
+            $.ajax({
+                url: '{{ route("reviews.store") }}',
+                type: 'POST',
+                data: {
+                    rating: rating,
+                    content: content,
+                    product_id: {{ $product->id }},
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    $('#reviewMessage').text('Review submitted successfully');
+                },
+                error: function(error) {
+                    $('#reviewMessage').text('Error submitting review. Please try again later.');
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '{{ route("reviews.index", $product->id) }}',
+                type: 'GET',
+                dataType: 'json',
+                success: function(reviews) {
+                    reviews.forEach(function(review) {
+                        var postedAt = new Date(review.created_at);
+                        var formattedDate = postedAt.toLocaleDateString('en-US', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+
+                        var starsHtml = '<div class="review-stars">';
+                        for (var i = 1; i <= 5; i++) {
+                            if (i <= review.rating) {
+                                starsHtml += '<i class="fa-solid fa-star"></i>';
+                            } else {
+                                starsHtml += '<i class="fa-regular fa-star"></i>';
+                            }
+                        }
+
+                        starsHtml += '</div>';
+
+                        var reviewHtml = '<div class="review">' +
+                            '<a href="/users/' + review.user.name + '">' +
+                            '<div class="review-user-info">';
+
+                        if (review.user.profile_image) {
+                            reviewHtml += '<img src="/images/' + review.user.profile_image + '" alt="User Profile Image" class="profile-image" style="width: 35px; height: 35px; border-radius: 50%;">';
+                        } else {
+                            reviewHtml += '<i class="fas fa-user-circle" style="font-size: 30px;"></i>';
+                        }
+
+
+                        reviewHtml +=
+                            '<p><strong>' + review.user.name + '</strong> </p>' +
+                            '</div>' +
+                            '</a>' +
+                            '<p>' + starsHtml + '</p>' +
+                            '<p>' + review.content + '</p>' +
+                            '<p><strong>Posted at:</strong> ' + formattedDate + '</p>' +
+                            '</div>';
+
+                        $('#reviewsList').append(reviewHtml);
+
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching reviews:', error);
+                }
+            });
+        });
+    </script>
+
 @endsection
+
+
+<script src="{{ asset('js/review.js') }}"></script>

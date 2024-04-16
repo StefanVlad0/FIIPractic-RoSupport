@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -92,6 +93,8 @@ Route::middleware(['auth'])->group(function () {
 
         return response()->json($users);
     });
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/products/{productId}/reviews', [ReviewController::class, 'index'])->name('reviews.index');
     Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.like');
     Route::get('/qr-code', [ReferralController::class, 'generateQrCode'])->name('qr-code');
     Route::get('/referral', [ReferralController::class, 'show'])->name('referral');

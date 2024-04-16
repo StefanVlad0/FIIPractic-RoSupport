@@ -7,7 +7,7 @@
 
 .profile-info {
     display: flex;
-    flex-direction: column; /* Afișează elementele în coloană */
+    flex-direction: column;
     align-items: center;
     background-color: #f2f2f2;
     border: 1px solid #ddd;
@@ -18,7 +18,7 @@
 .profile-details {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* Adaugă spațiu între detaliile profilului și biografie */
+    margin-bottom: 20px;
 }
 
 .profile-bio-container {
@@ -32,7 +32,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    min-width: 300px; /* Setează o înălțime minimă */
+    min-width: 300px;
 
 }
 
