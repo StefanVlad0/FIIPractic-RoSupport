@@ -30,8 +30,17 @@ class CommentController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $comment = $post->comments()->create($request->all());
-        return redirect()->route('posts.comments.show', [$post, $comment]);
+        $request->validate([
+            'body' => 'required|string',
+        ]);
+
+        $comment = new Comment();
+        $comment->body = $request->input('body');
+        $comment->post_id = $post->id;
+        $comment->user_id = auth()->id();
+        $comment->save();
+
+        return back();
     }
 
     /**

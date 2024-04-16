@@ -88,15 +88,17 @@
             </div>
         </div>
         <div class="post">
-            <p>Add review</p>
-            <div class="review-section stars" id="reviewStars">
-                @for ($i = 1; $i <= 5; $i++)
-                    <i class="fa-regular fa-star" data-rating="{{ $i }}" onmouseover="fillReviewStars({{ $i }})" onmouseout="resetReviewStars()" onclick="submitReview({{ $i }})"></i>
-                @endfor
-            </div>
-            <div class="review-section">
-                <textarea name="content" id="reviewContent" rows="3" placeholder="Add your review"></textarea>
-                <div id="reviewMessage" style="margin-top: 10px;"></div>
+            <div class="add-review">
+                <p>Add review</p>
+                <div class="review-section stars" id="reviewStars">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <i class="fa-regular fa-star" data-rating="{{ $i }}" onmouseover="fillReviewStars({{ $i }})" onmouseout="resetReviewStars()" onclick="submitReview({{ $i }})"></i>
+                    @endfor
+                </div>
+                <div class="review-section">
+                    <textarea name="content" id="reviewContent" rows="3" placeholder="Add your review"></textarea>
+                    <div id="reviewMessage" style="margin-top: 10px;"></div>
+                </div>
             </div>
         </div>
         <div class="post">

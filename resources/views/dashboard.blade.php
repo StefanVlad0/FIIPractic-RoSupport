@@ -67,10 +67,10 @@
 
                         <div class="likes" id="likes-{{ $post->id }}">{{ $post->likes }}</div>
                     </div>
-                    <div>
+                    <a href="{{ route('posts.show', $post->id) }}">
                         <i class="far fa-message message-icon"></i>
-                        <span class="comments-count">0 Comments</span>
-                    </div>
+                        <span class="comments-count">{{ $post->comments->count() }} {{ $post->comments->count() === 1 ? 'Comment' : 'Comments' }}</span>
+                    </a>
                 </div>
             </div>
         </div>
