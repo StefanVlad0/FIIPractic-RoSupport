@@ -135,8 +135,6 @@
             }
         }
 
-
-
         function updateTotalPrice() {
             var quantity = parseInt(quantityInput.value);
             totalPriceDisplay.textContent = quantity * price;
@@ -206,7 +204,6 @@
                             reviewHtml += '<i class="fas fa-user-circle" style="font-size: 30px;"></i>';
                         }
 
-
                         reviewHtml +=
                             '<p><strong>' + review.user.name + '</strong> </p>' +
                             '</div>' +
@@ -215,9 +212,7 @@
                             '<p>' + review.content + '</p>' +
                             '<p><strong>{{ __('products_show.posted_at') }}:</strong> ' + formattedDate + '</p>' +
                             '</div>';
-
                         $('#reviewsList').append(reviewHtml);
-
                     });
                 },
                 error: function(error) {
@@ -228,6 +223,5 @@
     </script>
 
 @endsection
-
 
 <script src="{{ asset('js/review.js') }}"></script>

@@ -75,13 +75,4 @@
 
 <script src="{{ asset('js/chatDrawer.js') }}"></script>
 <script src="{{ asset('js/notificationsDrawer.js') }}"></script>
-<script>
-    function toggleLanguageMenu() {
-        var menu = document.getElementById('language-menu');
-        if (menu.style.display === "none") {
-            menu.style.display = "block";
-        } else {
-            menu.style.display = "none";
-        }
-    }
-</script>
+<script src="{{ asset('js/toggleLanguage.js')}}"></script>

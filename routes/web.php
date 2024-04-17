@@ -21,7 +21,6 @@ Route::get('/', function () {
     if (Auth::check()) {
         $posts = Post::latest()->get();;
         return view('dashboard', ['posts' => $posts]);
-//        return view('dashboard');
     } else {
         return redirect('/login');
     }
@@ -30,17 +29,6 @@ Route::get('/', function () {
 Route::get("/locale/{lange}", [LocalizationController::class, 'setLang'])->name('setLanguage');
 
 Route::middleware(['auth'])->group(function () {
-
-//    Route::post('/language-switch', function (Request $request) {
-//        if($request->language) {
-//            session(['language' => $request->language]);
-//        }
-//        else {
-//            session(['language' => 'ro']);
-//        }
-//        return back();
-//    })->name('language.switch');
-
 
     Route::get('/tag/{tag}', [ProductController::class, 'tag']);
 
@@ -143,11 +131,3 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-
-//Route::get('/dashboard', function () {
-//    $posts = App\Models\Post::all(); // sau orice altă logică pentru a prelua postările
-//    return view('dashboard', ['posts' => $posts]);
-//})->name('dashboard')->middleware('auth');
-
-
-
