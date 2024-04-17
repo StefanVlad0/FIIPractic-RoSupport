@@ -27,6 +27,8 @@ Route::get('/', function () {
     }
 })->name('dashboard');
 
+Route::get("/locale/{lange}", [LocalizationController::class, 'setLang'])->name('setLanguage');
+
 Route::middleware(['auth'])->group(function () {
 
 //    Route::post('/language-switch', function (Request $request) {
@@ -39,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
 //        return back();
 //    })->name('language.switch');
 
-    Route::get("locale/{lange}", [LocalizationController::class, 'setLang']);
+
 
     Route::post('/products/{product}/order', [ProductController::class, 'order'])->name('products.order');
 

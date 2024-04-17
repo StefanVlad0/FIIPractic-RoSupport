@@ -11,11 +11,17 @@
         <ul class="nav-links">
             <li><a href="{{ url('/') }}">{{ __('navbar.home') }}</a></li>
         </ul>
-        <div class="language-switcher" style="margin-left: 200px">
-            <a href="locale/ro">Ro</a>
-            <a href="locale/en">En</a>
-        </div>
+
         <div class="login-logout">
+            <div class="dropdown" onclick="toggleLanguageMenu()">
+                <img id="flag" src="{{ app()->getLocale() == 'ro' ? asset('images/RO.png') : asset('images/US.png') }}" class="change-lang" style="width: 30px; height: 30px">
+                <div id="language-menu" style="display: none;">
+                    <a href="{{ route('setLanguage', ['lange' => 'ro']) }}">Română</a>
+                    <a href="{{ route('setLanguage', ['lange' => 'en']) }}">English</a>
+                </div>
+            </div>
+
+
             @if(Auth::check())
                 @php
                     $profileImage = Auth::user()->profile_image;
@@ -69,3 +75,13 @@
 
 <script src="{{ asset('js/chatDrawer.js') }}"></script>
 <script src="{{ asset('js/notificationsDrawer.js') }}"></script>
+<script>
+    function toggleLanguageMenu() {
+        var menu = document.getElementById('language-menu');
+        if (menu.style.display === "none") {
+            menu.style.display = "block";
+        } else {
+            menu.style.display = "none";
+        }
+    }
+</script>

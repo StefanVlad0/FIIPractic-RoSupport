@@ -74,7 +74,7 @@ p {
     cursor: pointer;
 }
 
-#drawer, #messengerDrawer, #notificationDrawer {
+#drawer, #messengerDrawer, #notificationDrawer, #language-menu {
     background-color: #333;
     color: #fff;
     padding: 15px;
@@ -85,14 +85,14 @@ p {
     z-index: 2;
 }
 
-#drawer a, #messengerDrawer a {
+#drawer a, #messengerDrawer a, #language-menu a {
     color: #fff;
     display: block;
     margin-bottom: 10px;
     text-decoration: none;
 }
 
-.points, .messenger, .notifications {
+.points, .messenger, .notifications, .change-lang {
     cursor: pointer;
     margin-right: 20px;
     display: flex;
@@ -138,5 +138,8 @@ p {
     left: -5px;
 }
 
-
+.dropdown {
+    display: flex;
+    align-items: center;
+}
 
