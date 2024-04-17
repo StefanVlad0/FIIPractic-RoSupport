@@ -152,4 +152,13 @@ class ProductController extends Controller
 
         return back()->with('success', 'Order placed successfully');
     }
+
+    public function tag($tagName)
+    {
+        $tag = Tag::where('name', $tagName)->first();
+        $products = $tag->products;
+
+        return view('tag', ['products' => $products, 'tag' => $tag]);
+    }
+
 }

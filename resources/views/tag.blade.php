@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ __('products_index.products') }}
+    RoSupport
 @endsection
 
 @section('head')
@@ -11,31 +11,9 @@
 
 @section('content')
 
-    <div class="navigation">
-        <a href="{{ url('/products') }}" class="activeButton">{{ __('products_index.products') }}</a>
-        <a href="{{ url('/') }}">{{ __('products_index.posts') }}</a>
-    </div>
+    <h1>{{ __('tag.all_products') }} {{ $tag->name }}:</h1>
 
     <div class="posts-container">
-        <a href="{{ route('products.create') }}" class="post">
-            @if(\Illuminate\Support\Facades\Auth::user()->profile_image)
-                <div class="create-post-container">
-                    <img src="{{ asset('images/' . \Illuminate\Support\Facades\Auth::user()->profile_image) }}" alt="User profile image" style="width: 35px; height: 35px; border-radius: 50%;">
-                    <div class="create-post">
-                        {{ __('products_index.post_product') }}
-                    </div>
-                </div>
-            @else
-                <div class="create-post-container">
-                    <div>
-                        <i class="fas fa-user-circle user-icon" style="font-size: 30px;"></i>
-                    </div>
-                    <div class="create-post">
-                        {{ __('products_index.post_product') }}
-                    </div>
-                </div>
-            @endif
-        </a>
 
         @php
             $products = $products->sortByDesc(function ($product, $key) {
@@ -92,8 +70,8 @@
                         @if($product->image3)
                             <img class="product-image" src="{{ asset('images/' . $product->image3) }}" alt="Post image 3" style="display: none;">
                         @endif
-                            <button class="prev navigation-button"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="next navigation-button"><i class="fa-solid fa-arrow-right"></i></button>
+                        <button class="prev navigation-button"><i class="fa-solid fa-arrow-left"></i></button>
+                        <button class="next navigation-button"><i class="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div class="comments-section">
                         <div class="price"><strong>{{ $product->price }} lei</strong></div>
@@ -102,7 +80,8 @@
                 </div>
             </div>
         @endforeach
-    <div>
+    </div>
 
-        <script src="{{ asset('js/imageCarousel.js') }}"></script>
+    <script src="{{ asset('js/imageCarousel.js') }}"></script>
+
 @endsection

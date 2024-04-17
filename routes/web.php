@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
 //    })->name('language.switch');
 
 
+    Route::get('/tag/{tag}', [ProductController::class, 'tag']);
 
     Route::post('/products/{product}/order', [ProductController::class, 'order'])->name('products.order');
 

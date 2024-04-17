@@ -45,6 +45,11 @@
                     <p class="promoted">- {{ __('products_show.promoted') }} -</p>
                 @endif
                 <p>{{ $product->description }}</p>
+                <div class="product-tags">
+                    @foreach($product->tags as $tag)
+                        <a href="/tag/{{ $tag->name }}" class="tag">{{ $tag->name }}</a>
+                    @endforeach
+                </div>
                 <div class="image-carousel" id="carousel-{{ $product->id }}">
                     @if($product->image1)
                         <img class="product-image" src="{{ asset('images/' . $product->image1) }}" alt="Post image 1">
