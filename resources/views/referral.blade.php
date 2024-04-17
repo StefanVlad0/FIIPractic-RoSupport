@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Referral
+{{ __('referral.referral') }}
 @endsection
 
 @section('head')
@@ -10,15 +10,15 @@
 @endsection
 
 @section('content')
-        <h1>Referral Link</h1>
-        <p>You currently have {{ Auth::user()->points }} points. Collect points to promote your products! Earn 3 points for every friend that joins, and they'll receive 1 point too.</p>
-        <p>Share this referral link with others:</p>
+        <h1> {{ __('referral.referral_link') }}</h1>
+        <p>{{ __('referral.referral_text1') }} {{ Auth::user()->points }} {{ __('referral.referral_text2') }}</p>
+        <p>{{ __('referral.share') }}</p>
         <div class="link-container">
             <input id="referralLink" type="text" value="{{ route('invite', ['name' => Auth::user()->name]) }}" readonly>
             <button onclick="copyToClipboard()"><i class="fas fa-copy"></i></button>
         </div>
 
-        <p>Or scan this QR code:</p>
+        <p>{{ __('referral.scan') }}</p>
 
         <div>
             <img src="{{ route('qr-code') }}" alt="QR Code">

@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-    User not found
+    {{ __('notFound.not_found') }}
 @endsection
 
 @section('content')
 <div>
-    Utilizatorul nu a fost găsit.
+    {{ __('notFound.not_found') }}
 </div>
 @endsection

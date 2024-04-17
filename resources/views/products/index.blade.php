@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Products
+    {{ __('products_index.products') }}
 @endsection
 
 @section('head')
@@ -12,8 +12,8 @@
 @section('content')
 
     <div class="navigation">
-        <a href="{{ url('/products') }}" class="activeButton">Products</a>
-        <a href="{{ url('/') }}">Posts</a>
+        <a href="{{ url('/products') }}" class="activeButton">{{ __('products_index.products') }}</a>
+        <a href="{{ url('/') }}">{{ __('products_index.posts') }}</a>
     </div>
 
     <div class="posts-container">
@@ -22,7 +22,7 @@
                 <div class="create-post-container">
                     <img src="{{ asset('images/' . \Illuminate\Support\Facades\Auth::user()->profile_image) }}" alt="User profile image" style="width: 35px; height: 35px; border-radius: 50%;">
                     <div class="create-post">
-                        Post a product
+                        {{ __('products_index.post_product') }}
                     </div>
                 </div>
             @else
@@ -31,7 +31,7 @@
                         <i class="fas fa-user-circle user-icon" style="font-size: 30px;"></i>
                     </div>
                     <div class="create-post">
-                        Post a product
+                        {{ __('products_index.post_product') }}
                     </div>
                 </div>
             @endif
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     @if($product->is_promoted && $product->created_at->diffInHours() < 24)
-                        <p class="promoted">- PROMOTED -</p>
+                        <p class="promoted">- {{ __('products_index.promoted') }} -</p>
                     @endif
                     <p>{{ $product->description }}</p>
                     <div class="image-carousel" id="carousel-{{ $product->id }}">
@@ -92,7 +92,7 @@
                     </div>
                     <div class="comments-section">
                         <div class="price"><strong>{{ $product->price }} lei</strong></div>
-                        <button onclick="window.location='{{ route('products.show', $product->id) }}'">Comanda</button>
+                        <button onclick="window.location='{{ route('products.show', $product->id) }}'">{{ __('products_index.order') }}</button>
                     </div>
                 </div>
             </div>

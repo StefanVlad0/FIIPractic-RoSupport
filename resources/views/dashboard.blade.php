@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Homepage
+    {{ __('dashboard.homepage') }}
 @endsection
 
 @section('head')
@@ -12,8 +12,8 @@
 @section('content')
 
     <div class="navigation">
-        <a href="{{ url('/products') }}">Products</a>
-        <a href="{{ url('/') }}" class="activeButton">Posts</a>
+        <a href="{{ url('/products') }}">{{ __('dashboard.products') }}</a>
+        <a href="{{ url('/') }}" class="activeButton">{{ __('dashboard.posts') }}</a>
     </div>
 
 <div class="posts-container">
@@ -22,7 +22,7 @@
             <div class="create-post-container">
                 <img src="{{ asset('images/' . \Illuminate\Support\Facades\Auth::user()->profile_image) }}" alt="User profile image" style="width: 35px; height: 35px; border-radius: 50%;">
                 <div class="create-post">
-                    Create a post
+                    {{ __('dashboard.create_a_post') }}
                 </div>
             </div>
         @else
@@ -31,7 +31,7 @@
                     <i class="fas fa-user-circle user-icon" style="font-size: 30px;"></i>
                 </div>
                 <div class="create-post">
-                    Create a post
+                    {{ __('dashboard.create_a_post') }}
                 </div>
             </div>
         @endif
@@ -69,7 +69,7 @@
                     </div>
                     <a href="{{ route('posts.show', $post->id) }}">
                         <i class="far fa-message message-icon"></i>
-                        <span class="comments-count">{{ $post->comments->count() }} {{ $post->comments->count() === 1 ? 'Comment' : 'Comments' }}</span>
+                        <span class="comments-count">{{ $post->comments->count() }} {{ $post->comments->count() === 1 ? __('dashboard.comment') : __('dashboard.comments') }}</span>
                     </a>
                 </div>
             </div>

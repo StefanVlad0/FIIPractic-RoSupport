@@ -9,8 +9,12 @@
     <div class="container">
         <div class="logo">RoSupport</div>
         <ul class="nav-links">
-            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/') }}">{{ __('navbar.home') }}</a></li>
         </ul>
+        <div class="language-switcher" style="margin-left: 200px">
+            <a href="locale/ro">Ro</a>
+            <a href="locale/en">En</a>
+        </div>
         <div class="login-logout">
             @if(Auth::check())
                 @php
@@ -44,20 +48,20 @@
                     </div>
                 @endif
                 <div id="drawer" style="display: none;">
-                    <a href="{{ route('users.show', ['name' => Auth::user()->name]) }}">View Profile</a>
-                    <a href="{{ route('profile.edit') }}">Edit Profile</a>
-                    <a href="{{ route('referral') }}">Referral</a>
+                    <a href="{{ route('users.show', ['name' => Auth::user()->name]) }}">{{ __('navbar.view_profile') }}</a>
+                    <a href="{{ route('profile.edit') }}">{{ __('navbar.edit_profile') }}</a>
+                    <a href="{{ route('referral') }}">{{ __('navbar.referral') }}</a>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
-                        Logout
+                        {{ __('navbar.logout') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </div>
             @else
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}">{{ __('navbar.login') }}</a>
             @endif
         </div>
     </div>
@@ -65,4 +69,3 @@
 
 <script src="{{ asset('js/chatDrawer.js') }}"></script>
 <script src="{{ asset('js/notificationsDrawer.js') }}"></script>
-

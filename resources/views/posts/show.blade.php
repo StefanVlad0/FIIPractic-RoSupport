@@ -39,7 +39,7 @@
                     </div>
                     <div>
                         <i class="far fa-message message-icon"></i>
-                        <span class="comments-count">{{ $post->comments->count() }} {{ $post->comments->count() === 1 ? 'Comment' : 'Comments' }}</span>
+                        <span class="comments-count">{{ $post->comments->count() }} {{ $post->comments->count() === 1 ? __('posts_show.comment') : __('posts_show.comments') }}</span>
                     </div>
                 </div>
             </div>
@@ -49,15 +49,15 @@
                 @csrf
                 <input type="hidden" name="post_id" value="{{ $post->id }}">
                 <div class="form-group">
-                    <label for="body">Add comment:</label><br>
+                    <label for="body">{{ __('posts_show.add_comment') }}</label><br>
                     <textarea class="form-control" id="body" name="body" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">{{ __('posts_show.submit') }}</button>
             </form>
         </div>
         <div class="post">
             <div class="comments">
-            <h4>Comments:</h4>
+            <h4>{{ __('posts_show.comments') }}:</h4>
                 @php
                     $comments = $post->comments->sortByDesc('created_at');
                 @endphp
@@ -78,7 +78,7 @@
                         </div>
                     @endforeach
                 @else
-                    <p>No comments yet.</p>
+                    <p>{{ __('posts_show.no_comments') }}</p>
                 @endif
             </div>
         </div>

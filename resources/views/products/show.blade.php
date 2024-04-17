@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 @if($product->is_promoted && $product->created_at->diffInHours() < 24)
-                    <p class="promoted">- PROMOTED -</p>
+                    <p class="promoted">- {{ __('products_show.promoted') }} -</p>
                 @endif
                 <p>{{ $product->description }}</p>
                 <div class="image-carousel" id="carousel-{{ $product->id }}">
@@ -69,7 +69,7 @@
                     <form action="{{ route('products.order', $product->id) }}" method="POST">
                         @csrf
                         <input type="hidden" id="quantity" name="quantity" value="0">
-                        <button type="submit">Comanda</button>
+                        <button type="submit">{{ __('products_show.order') }}</button>
                     </form>
                 </div>
                 @if (session('success'))
@@ -89,21 +89,21 @@
         </div>
         <div class="post">
             <div class="add-review">
-                <p>Add review</p>
+                <p>{{ __('products_show.add_review') }}</p>
                 <div class="review-section stars" id="reviewStars">
                     @for ($i = 1; $i <= 5; $i++)
                         <i class="fa-regular fa-star" data-rating="{{ $i }}" onmouseover="fillReviewStars({{ $i }})" onmouseout="resetReviewStars()" onclick="submitReview({{ $i }})"></i>
                     @endfor
                 </div>
                 <div class="review-section">
-                    <textarea name="content" id="reviewContent" rows="3" placeholder="Add your review"></textarea>
+                    <textarea name="content" id="reviewContent" rows="3" placeholder="{{ __('products_show.add_your_review') }}"></textarea>
                     <div id="reviewMessage" style="margin-top: 10px;"></div>
                 </div>
             </div>
         </div>
         <div class="post">
             <div id="reviewsList">
-                <h2>Reviews</h2>
+                <h2>{{ __('products_show.reviews') }}</h2>
             </div>
         </div>
     </div>
@@ -208,7 +208,7 @@
                             '</a>' +
                             '<p>' + starsHtml + '</p>' +
                             '<p>' + review.content + '</p>' +
-                            '<p><strong>Posted at:</strong> ' + formattedDate + '</p>' +
+                            '<p><strong>{{ __('products_show.posted_at') }}:</strong> ' + formattedDate + '</p>' +
                             '</div>';
 
                         $('#reviewsList').append(reviewHtml);

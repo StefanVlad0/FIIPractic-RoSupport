@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Profile
+    {{ __('profile_edit.edit') }}
 @endsection
 
 @section('head')
@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="login-form-container">
-        <h2>Edit Profile</h2>
+        <h2>{{ __('profile_edit.edit') }}</h2>
 
         <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
             @csrf
@@ -25,16 +25,16 @@
             <label for="bio">Bio</label>
             <textarea id="bio" name="bio">{{ auth()->user()->bio }}</textarea>
 
-            <label for="profile_image">Profile Image</label>
+            <label for="profile_image">{{ __('profile_edit.profile_image') }}</label>
             <input type="file" id="profile_image" name="profile_image">
 
-            <label for="password">New Password</label>
+            <label for="password">{{ __('profile_edit.password') }}</label>
             <input type="password" id="password" name="password">
 
-            <label for="password_confirmation">Confirm New Password</label>
+            <label for="password_confirmation">{{ __('profile_edit.confirm_password') }}</label>
             <input type="password" id="password_confirmation" name="password_confirmation">
 
-            <button type="submit">Update</button>
+            <button type="submit">{{ __('profile_edit.update') }}</button>
         </form>
 
         @if ($errors->any())

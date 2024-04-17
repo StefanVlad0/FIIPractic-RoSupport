@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('title')
-    User not found
+    {{ __('user_not_found.user_not_found') }}
 @endsection
 
 @section('content')
-    <h1>Acest utilizator nu mai există</h1>
+    <h1>{{ __('user_not_found.no_longer') }}</h1>
 @endsection

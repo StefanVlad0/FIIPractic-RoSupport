@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\PostController;
@@ -9,6 +10,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
+use App\Models\Post;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -16,7 +19,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        $posts = App\Models\Post::latest()->get();;
+        $posts = Post::latest()->get();;
         return view('dashboard', ['posts' => $posts]);
 //        return view('dashboard');
     } else {
@@ -25,6 +28,18 @@ Route::get('/', function () {
 })->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+
+//    Route::post('/language-switch', function (Request $request) {
+//        if($request->language) {
+//            session(['language' => $request->language]);
+//        }
+//        else {
+//            session(['language' => 'ro']);
+//        }
+//        return back();
+//    })->name('language.switch');
+
+    Route::get("locale/{lange}", [LocalizationController::class, 'setLang']);
 
     Route::post('/products/{product}/order', [ProductController::class, 'order'])->name('products.order');
 

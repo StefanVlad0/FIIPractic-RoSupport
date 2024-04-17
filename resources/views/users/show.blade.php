@@ -26,14 +26,14 @@
                     <p>Email: {{ $user->email }}</p>
                 </div>
             </div>
-            <p style="align-self:flex-start;">Biography:</p>
+            <p style="align-self:flex-start;">{{ __('users_show.bio') }}:</p>
             <div class="profile-bio-container">
                 <div class="profile-bio">
-                    <p>{{ $user->bio ?? 'No biography' }}</p>
+                    <p>{{ $user->bio ?? __('users_show.no_bio') }}</p>
                 </div>
             </div>
             @if($user->id !== auth()->id())
-                <a href="{{ route('message.create', ['name' => $user->name]) }}" class="message-button">Send message</a>
+                <a href="{{ route('message.create', ['name' => $user->name]) }}" class="message-button">{{ $user->bio ?? __('users_show.send_message') }}</a>
             @endif
         </div>
         @foreach($user->posts()->orderBy('created_at', 'desc')->get() as $post)
@@ -63,10 +63,10 @@
 
                             <div class="likes" id="likes-{{ $post->id }}">{{ $post->likes }}</div>
                         </div>
-                        <div>
+                        <a href="{{ route('posts.show', $post->id) }}">
                             <i class="far fa-message message-icon"></i>
-                            <span class="comments-count">0 Comments</span>
-                        </div>
+                            <span class="comments-count">{{ $post->comments->count() }} {{ $post->comments->count() === 1 ? __('dashboard.comment') : __('dashboard.comments') }}</span>
+                        </a>
                     </div>
                 </div>
             </div>
