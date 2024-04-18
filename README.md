@@ -29,15 +29,21 @@ In order for the QR code to be displayed, you need to have [PHP GD](https://www.
 
 ### Clone the project
 
-```git clone https://github.com/StefanVlad0/FIIPractic-RoSupport.git```
+```
+git clone https://github.com/StefanVlad0/FIIPractic-RoSupport.git
+```
 
 Move to the project directory:
 
-```cd FIIPractic-RoSupport```
+```
+cd FIIPractic-RoSupport
+```
 
 ### Install the project's dependencies
 
-```composer i```
+```
+composer i
+```
 
 ### Rename .env.example
 
@@ -45,7 +51,9 @@ Rename `.env.example` to `.env` and adjust the port to your needs.
 
 Generate an application encryption key and add it to the .env file:
 
-```php artisan key:generate```
+```
+php artisan key:generate
+```
 
 ### Create database
 
@@ -53,15 +61,21 @@ Create a database in phpmyadmin named `rosupport` and set it's collation to `utf
 
 ### Run migrations:
 
-```php artisan migrate```
+```
+php artisan migrate
+```
 
 ### Run seeders:
 
-```php artisan db:seed```
+```
+php artisan db:seed
+```
 
 ### Run the server:
 
-```php artisan serve```
+```
+php artisan serve
+```
 
 ## Key Features
 
