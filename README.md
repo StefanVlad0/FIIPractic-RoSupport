@@ -9,7 +9,8 @@ Project made by **Stefan Vlad** during the training provided by **CloudLab**, wi
 ##  Contents
 
 1. [About](#about)
-2. [Key features](#key-features)
+2. [Installation](#installation)
+3. [Key features](#key-features)
 
 
 ## About
@@ -17,6 +18,50 @@ Project made by **Stefan Vlad** during the training provided by **CloudLab**, wi
 This is the final project for the **"Full-Stack Development by CloudLab"** training.
 
 **RoSupport** is a platform that aims to promote local products.
+
+## Installation
+**IMPORTANT!** 
+
+In order for the QR code to be displayed, you need to have [PHP GD](https://www.php.net/manual/en/book.image.php) configured. To achive this:
+- Locate and open php.ini.
+- Find **;extension=gd**.
+- Remove semicolon from **;extension=gd**, save the file and reboot the server.
+
+### Clone the project
+
+```git clone https://github.com/StefanVlad0/FIIPractic-RoSupport.git```
+
+Move to the project directory:
+
+```cd FIIPractic-RoSupport```
+
+### Install the project's dependencies
+
+```composer i```
+
+### Rename .env.example
+
+Rename `.env.example` to `.env` and adjust the port to your needs.
+
+Generate an application encryption key and add it to the .env file:
+
+```php artisan key:generate```
+
+### Create database
+
+Create a database in phpmyadmin named `rosupport` and set it's collation to `utf8_general_ci`
+
+### Run migrations:
+
+```php artisan migrate```
+
+### Run seeders:
+
+```php artisan db:seed```
+
+### Run the server:
+
+```php artisan serve```
 
 ## Key Features
 
